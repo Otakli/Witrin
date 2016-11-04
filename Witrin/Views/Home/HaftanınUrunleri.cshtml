@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Witrin.Models.Kampanyalar>
+
+@{
+    Layout = null;
+    
+}
+
+
+@helper carp(int eskifiyat, int ind) { 
+  @(eskifiyat-(eskifiyat*ind)/100) 
+ }
+
+        <div class="item">
+            <div class="products special-product">
+
+                @foreach (var item in ViewBag.birinci)
+                {
+                    <div class="product">
+                        <div class="product-micro">
+                            <div class="row product-micro-row">
+                                <div class="col col-xs-5">
+                                    <div class="product-image">
+                                        <div class="image">
+                                            <a href=@item.Urunler.Urunresimler.kucukresim data-lightbox="image-1" data-title="Nunc ullamcors">
+                                                <img data-echo=@item.Urunler.Urunresimler.kucukresim src="assets/images/blank.gif" alt="">
+                                                <div class="zoom-overlay"></div>
+                                            </a>
+                                        </div><!-- /.image -->
+
+
+
+                                    </div><!-- /.product-image -->
+                                </div><!-- /.col -->
+                                <div class="col col-xs-7">
+                                    <div class="product-info">
+                                        <h3 class="name"><a href="#">@item.Urunler.urun_ad</a></h3>
+
+                                        <div class="product-price">
+                                            <span class="price">
+                                               @carp((int)item.Urunler.urun_fiyat,(int)item.indirimoran) ₺
+                                            </span>
+                                            <span class="price-before-discount">
+                                                @item.Urunler.urun_fiyat ₺  
+                                            </span>
+                                        </div><!-- /.product-price -->
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-shopping-cart"></i>  Sepete Ekle</button>
+                                    </div>
+                                </div><!-- /.col -->
+                            </div><!-- /.product-micro-row -->
+                        </div><!-- /.product-micro -->
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+        
+        <div class="item">
+        <div class="products special-product">
+
+            @foreach (var item in ViewBag.ikinci)
+            {
+                <div class="product">
+                    <div class="product-micro">
+                        <div class="row product-micro-row">
+                            <div class="col col-xs-5">
+                                <div class="product-image">
+                                    <div class="image">
+                                        <a href=@item.Urunler.Urunresimler.kucukresim data-lightbox="image-1" data-title="Nunc ullamcors">
+                                            <img data-echo=@item.Urunler.Urunresimler.kucukresim src="assets/images/blank.gif" alt="">
+                                            <div class="zoom-overlay"></div>
+                                        </a>
+                                    </div><!-- /.image -->
+
+
+
+                                </div><!-- /.product-image -->
+                            </div><!-- /.col -->
+                            <div class="col col-xs-7">
+                                <div class="product-info">
+                                    <h3 class="name"><a href="#">@item.Urunler.urun_ad</a></h3>
+
+                                    <div class="product-price">
+                                        <span class="price">
+                                           @carp((int)item.Urunler.urun_fiyat, (int)item.indirimoran) ₺
+                                        </span>
+                                        <span class="price-before-discount">
+                                            @item.Urunler.urun_fiyat ₺
+                                        </span>
+                                    </div><!-- /.product-price -->
+                                      <button class="btn btn-primary" type="button">Sepete Ekle</button>
+                                </div>
+                            </div><!-- /.col -->
+                        </div><!-- /.product-micro-row -->
+                    </div><!-- /.product-micro -->
+
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+    
+    
+
+
+
+
+
+

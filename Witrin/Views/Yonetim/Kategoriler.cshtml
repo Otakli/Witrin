@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Witrin.Models.Kategoriler>
+
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Kategoriler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kategori Oluştur", "KategoriEkle")
+</p>
+<table>
+    <tr>
+        <th>
+        <pre>Kat id     </pre>    
+        </th>
+        <th>
+            <pre>AnaKat id     </pre>    
+        </th>
+        <th>
+            <pre>Kat adı     </pre>    
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.kat_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anakat_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kat_ad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.kat_id}) |
+            @Html.ActionLink("Details", "Details", new { id = item.kat_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.kat_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Witrin.Models.Urunozelliktanım>
+
+@{
+    ViewBag.Title = "UrunOzelliktanım";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>UrunOzelliktanım</h2>
+
+<p>
+    @Html.ActionLink("Create New", "UrunOzelliktanımekle")
+</p>
+<table>
+    <tr>
+        <th>
+         <pre> @Html.DisplayNameFor(model => model.ozellik_id)      </pre>
+        </th>
+        <th>
+         <pre>@Html.DisplayNameFor(model => model.ozellik_ad)</pre>            
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ozellik_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ozellik_ad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ozellik_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ozellik_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ozellik_id })
+        </td>
+    </tr>
+}
+
+</table>

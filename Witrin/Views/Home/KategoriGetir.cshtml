@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Witrin.Models.Kategoriler>
+
+@{
+    Layout = null;
+}
+
+@foreach (var kat in Model.Where(x => x.anakat_id == 0))
+{
+    var altmenu = Model.Where(x => x.anakat_id == kat.kat_id);
+
+    <li class="dropdown">
+        <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">@kat.kat_ad</a>
+        <ul class="dropdown-menu">
+            <li>
+                <div class="yamm-content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class='col-md-12'>
+
+                                    <div class="col-xs-4 col-sm-4 col-md-12">
+
+                                        <ul class="links">
+
+                                            @foreach (var alt in altmenu)
+                                            {
+                                                <h2><li class="title"><a href="#">@alt.kat_ad</a></li></h2>
+                                              
+                                            }
+
+
+
+                                        </ul>
+                                    </div><!-- /.col -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>
+                    </div><!-- /.row -->
+
+                </div><!-- /.yamm-content -->
+            </li>
+        </ul>
+    </li>
+}

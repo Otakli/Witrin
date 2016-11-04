@@ -1,0 +1,46 @@
+﻿@model Witrin.Models.Kategoriler
+
+@{
+    ViewBag.Title = "KategoriEkle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>KategoriEkle</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+       
+        <br />
+
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.anakat_id)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.anakat_id)
+            @Html.ValidationMessageFor(model => model.anakat_id)
+        </div>
+
+        <br />
+
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.kat_ad)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.kat_ad)
+            @Html.ValidationMessageFor(model => model.kat_ad)
+        </div>
+
+        <br />
+        <p>
+            <input class="form-control" style="width:233px;" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

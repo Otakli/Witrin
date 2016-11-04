@@ -1,0 +1,34 @@
+﻿@model Witrin.Models.Urunozelliktanım
+
+@{
+    ViewBag.Title = "UrunOzelliktanımekle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Ozellik Tanım ekle</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        
+        <div  class="form-control"  style="width:212px;">
+            @Html.LabelFor(model => model.ozellik_ad)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.ozellik_ad)
+            @Html.ValidationMessageFor(model => model.ozellik_ad)
+        </div>
+        <br />
+        <p>
+            <input class="form-control" style="width:212px;" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

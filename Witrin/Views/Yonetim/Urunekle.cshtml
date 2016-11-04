@@ -1,0 +1,87 @@
+﻿@model Witrin.Models.Urunler
+
+@{
+    ViewBag.Title = "Urunekle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Ürün ekle</h2>
+
+@using (Html.BeginForm("Urunekle", "Yonetim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+
+    <fieldset>
+
+       
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.urun_ad)
+        </div>
+       
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.urun_ad)
+            @Html.ValidationMessageFor(model => model.urun_ad)
+        </div>
+        <br />
+
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.kat_id)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.kat_id)
+            @Html.ValidationMessageFor(model => model.kat_id)
+        </div>
+        <br />
+
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.marka_id)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.marka_id)
+            @Html.ValidationMessageFor(model => model.marka_id)
+        </div> 
+        <br />
+        
+
+        <div class="form-control" style="width:212px;">
+            @Html.LabelFor(model => model.urun_fiyat)
+        </div>
+        <div class="editor-field" style="font-size:20px;">
+            @Html.EditorFor(model => model.urun_fiyat)
+            @Html.ValidationMessageFor(model => model.urun_fiyat)
+        </div>
+
+        <br />
+
+        <div class="form-control" style="width:212px;  height:70px; ">
+           Resim Seç : <input type="file" name="Resim" value="" />
+        </div>
+        
+
+            <br />
+
+            <div class="form-control" style="width:212px; height:70px;">
+                Stok Durumu
+                <div class="editor-field" style="font-size:15px;">
+                    @Html.EditorFor(model => model.stokadet)
+                    @Html.ValidationMessageFor(model => model.stokadet)
+                </div>
+
+            </div>
+
+
+            <br />
+
+            <p>
+                <input class="form-control" style="width:233px;" type="submit" value="Kaydet" />
+            </p>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

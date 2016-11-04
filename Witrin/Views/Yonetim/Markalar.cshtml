@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Witrin.Models.Markalar>
+
+@{
+    ViewBag.Title = "Markalar";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Markalar</h2>
+
+<p>
+    @Html.ActionLink("Create New", "MarkaEkle")
+</p>
+<table>
+    <tr>
+        <th>
+           <pre>Marka id     </pre>  
+        </th>
+        <th>
+            <pre>Marka adı     </pre>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.marka_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marka_ad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

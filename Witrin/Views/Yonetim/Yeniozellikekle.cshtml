@@ -1,0 +1,50 @@
+﻿@model Witrin.Models.Urunozellik
+
+@{
+    ViewBag.Title = "Yeniozellikekle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Yeniozellikekle</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ozellik_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ozellik_id)
+            @Html.ValidationMessageFor(model => model.ozellik_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.urun_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.urun_id)
+            @Html.ValidationMessageFor(model => model.urun_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.deger)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.deger)
+            @Html.ValidationMessageFor(model => model.deger)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

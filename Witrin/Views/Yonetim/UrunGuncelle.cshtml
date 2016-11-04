@@ -1,0 +1,81 @@
+﻿@model Witrin.Models.Urunler
+
+@{
+    ViewBag.Title = "UrunGuncelle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>UrunGuncelle</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.urun_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.urun_id)
+            @Html.ValidationMessageFor(model => model.urun_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.urun_ad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.urun_ad)
+            @Html.ValidationMessageFor(model => model.urun_ad)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.kat_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.kat_id)
+            @Html.ValidationMessageFor(model => model.kat_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.marka_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.marka_id)
+            @Html.ValidationMessageFor(model => model.marka_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.urunresim_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.urunresim_id)
+            @Html.ValidationMessageFor(model => model.urunresim_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.urun_fiyat)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.urun_fiyat)
+            @Html.ValidationMessageFor(model => model.urun_fiyat)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.stokadet)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.stokadet)
+            @Html.ValidationMessageFor(model => model.stokadet)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

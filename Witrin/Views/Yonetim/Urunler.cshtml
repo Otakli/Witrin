@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Witrin.Models.Urunler>
+
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Urunler</h2>
+
+<p>
+    @Html.ActionLink("Yeni Urun oluştur", "Urunekle")
+</p>
+<table>
+    <tr>
+        <th>
+          <pre>Urun id     </pre>  
+        </th>
+        <th>
+           <pre>Urun adı     </pre> 
+        </th>
+        <th>
+            <pre>Kat id     </pre>
+        </th>
+        <th>
+            <pre>Marka id     </pre>
+        </th>      
+        <th>
+            <pre>Fiyat     </pre>
+        </th>
+        <th>
+            <pre>Stok Durumu     </pre> 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.urun_id)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.urun_ad)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.kat_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.marka_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.urun_fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stokadet)
+        </td>
+        <td>
+            @Html.ActionLink("Ürün Güncelle", "UrunGuncelle", new { id = item.urun_id }) |
+            @Html.ActionLink("Sil", "UrunSil", new { id = item.urun_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,190 @@
+﻿@{
+    Layout = null;
+}
+@model Witrin.Models.Sepet
+
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="MediaCenter, Template, eCommerce">
+    <meta name="robots" content="all">
+    <title>themelock.com - Unicase</title>
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/bootstrap.min.css">
+
+    <!-- Customizable CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/main.css">
+    <link rel="stylesheet" href="/Content/assets/css/green.css">
+    <link rel="stylesheet" href="/Content/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="/Content/assets/css/owl.transitions.css">
+    <!--<link rel="stylesheet" href="/Content/assets/css/owl.theme.css">-->
+    <link href="/Content/assets/css/lightbox.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/Content/assets/css/rateit.css">
+    <link rel="stylesheet" href="/Content/assets/css/bootstrap-select.min.css">
+    <!-- Demo Purpose Only. Should be removed in production -->
+    <link rel="stylesheet" href="/Content/assets/css/config.css">
+    <link href="/Content/assets/css/green.css" rel="alternate stylesheet" title="Green color">
+    <link href="/Content/assets/css/blue.css" rel="alternate stylesheet" title="Blue color">
+    <link href="/Content/assets/css/red.css" rel="alternate stylesheet" title="Red color">
+    <link href="/Content/assets/css/orange.css" rel="alternate stylesheet" title="Orange color">
+    <link href="/Content/assets/css/dark-green.css" rel="alternate stylesheet" title="Darkgreen color">
+    <!-- Demo Purpose Only. Should be removed in production : END -->
+    <!-- Icons/Glyphs -->
+    <link rel="stylesheet" href="/Content/assets/css/font-awesome.min.css">
+    <!-- Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/Content/assets/images/favicon.ico">
+    <!-- HTML5 elements and media queries Support for IE8 : HTML5 shim and Respond.js -->
+    <!--[if lt IE 9]>
+        <script src="/Content/assets/js/html5shiv.js"></script>
+        <script src="/Content/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="logo">
+        <a href="home.html">
+
+            <img src="/Content/assets/images/logo.png" style="width:230px; height:65px; margin-top:3px;  margin-left:135px; margin-top:20px;" alt="">
+        </a>
+    </div>
+    <div class="row inner-bottom-sm" style="margin-left:120px; margin-right:120px; margin-top:10px;">
+        <div class="shopping-cart">
+            <div class="col-md-12 col-sm-12 shopping-cart-table ">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="cart-romove item">Kaldır</th>
+                                <th class="cart-description item">Resim</th>
+                                <th class="cart-product-name item">Ürün Adı</th>
+                                <th class="cart-qty item">Adet</th>
+                                <th class="cart-sub-total item">Fiyat</th>
+                                <th class="cart-total last-item">Toplam Fiyat</th>
+                            </tr>
+                        </thead><!-- /thead -->
+                        <tfoot>
+                            <tr>
+                                <td colspan="7">
+                                    <div class="shopping-cart-btn">
+                                        <span class="">
+                                            <a href="#" class="btn btn-upper btn-primary outer-left-xs">Alışverişe Devam Et</a>
+                                            <a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Güncelle</a>
+                                        </span>
+                                    </div><!-- /.shopping-cart-btn -->
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+
+                            @if (ViewBag.mesaj != null)
+                            {
+                                <tr>
+                                    <td class="romove-item"><a href="#" title="cancel" class="icon"><i class="fa fa-trash-o"></i> @ViewBag.mesaj </a></td>
+                                </tr>
+                            }
+
+                            else
+                            {
+
+                                foreach (var item in ViewBag.uyeurun)
+                                {
+                                    ViewBag.veri = item.urun_adet;
+                       
+                                    <tr>
+                                        <td class="romove-item" ><i class="fa fa-trash-o"></i>@Html.ActionLink(" Kaldır", "SepetUrunSil", new { id = item.sepet_id })</td>
+                                        <td class="cart-image">
+                                            <a class="entry-thumbnail" href="detail.html">
+                                                <img src=@item.Urunler.Urunresimler.kucukresim alt="">
+                                            </a>
+                                        </td>
+                                        <td class="cart-product-name-info">
+                                            <h4 class='cart-product-description'><a href="detail.html"></a> @item.Urunler.urun_ad   </h4>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="rating rateit-small"></div>
+                                                </div>
+                                            </div><!-- /.row -->
+                                        </td>
+                                       
+                                        <td class="cart-product-quantity">
+                                            <div class="quant-input">
+                                                <div class="arrows">
+                                                    <div class="arrow plus gradient"><span class="ir"><a href="@Url.Action("SepetUrunArttır", new { id = item.sepet_id})"> <i class="icon fa fa-sort-asc"></i>  </a></span></div>
+                                                    <div class="arrow minus gradient"><span class="ir"><a href="@Url.Action("SepetUrunAzalt", new { id = item.sepet_id})"> <i class="icon fa fa-sort-desc"></i>  </a></span></div>
+                                                </div>
+
+                                                <input type="text" value="@item.urun_adet" id="list">
+                                                
+                                                
+                                            </div>
+                                        </td>
+                                        <td class="cart-product-sub-total"><span class="cart-sub-total-price">@item.urun_fiyat ₺</span></td>
+                                        <td class="cart-product-grand-total"><span class="cart-grand-total-price">$539.88</span></td>
+                                    </tr>
+
+                                }
+                            }
+                        </tbody><!-- /tbody -->
+                    </table><!-- /table -->
+                </div>
+            </div><!-- /.shopping-cart-table -->
+            <!-- /.estimate-ship-tax -->
+            <!-- /.estimate-ship-tax -->
+
+            <div class="col-md-4 col-sm-12 cart-shopping-total  " style="float:right">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="cart-sub-total">
+                                    Subtotal<span class="inner-left-md">$600.00</span>
+                                </div>
+                                <div class="cart-grand-total">
+                                    Grand Total<span class="inner-left-md">$600.00</span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead><!-- /thead -->
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="cart-checkout-btn pull-right">
+                                    <button type="submit" class="btn btn-primary">PROCCED TO CHEKOUT</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody><!-- /tbody -->
+                </table><!-- /table -->
+            </div><!-- /.cart-shopping-total -->
+        </div><!-- /.shopping-cart -->
+    </div>
+    <script src="/Content/assets/js/jquery-1.11.1.min.js"></script>
+
+    <script src="/Content/assets/js/bootstrap.min.js"></script>
+
+    <script src="/Content/assets/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/Content/assets/js/owl.carousel.min.js"></script>
+
+    <script src="/Content/assets/js/echo.min.js"></script>
+    <script src="/Content/assets/js/jquery.easing-1.3.min.js"></script>
+    <script src="/Content/assets/js/bootstrap-slider.min.js"></script>
+    <script src="/Content/assets/js/jquery.rateit.min.js"></script>
+    <script type="text/javascript" src="/Content/assets/js/lightbox.min.js"></script>
+    <script src="/Content/assets/js/bootstrap-select.min.js"></script>
+    <script src="/Content/assets/js/wow.min.js"></script>
+    <script src="/Content/assets/js/scripts.js"></script>
+
+
+</body>
+
+
+                                               
